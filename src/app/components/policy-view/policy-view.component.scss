@@ -1,0 +1,22 @@
+.panel-body {
+  .form-container{
+    display: flex;
+    flex-direction: row;
+    .form-container-panel {
+      width: 50%;
+      padding: 8px;
+    }
+  }
+  .policy-covers-headers{
+    color: #449d44;
+    text-align: right;
+    background-color: aliceblue;
+    cursor: pointer;
+  }
+  .form-footer{
+    button {
+      margin: 0 5px;
+    }
+  }
+}
+

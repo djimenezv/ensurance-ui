@@ -1,0 +1,96 @@
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Policy</h3>
+              </div>
+              <div class="panel-body">
+                <form [formGroup]="formState" (ngSubmit)="onSubmit()">
+                    <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <strong>Error</strong>
+                        {{errorMessage}}
+                    </div>
+
+              <div class="form-container" *ngIf="!showMessage">
+                  <div class="form-container-panel">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Policy Name</label>
+                      <input type="text" class="form-control" formControlName="name" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Description</label>
+                      <input type="text" class="form-control" formControlName="description"  placeholder="Description">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Starting Date</label>
+                      <input type="date" class="form-control" formControlName="startingDate" placeholder="Starting Date">
+                    </div>
+                </div>
+                <div class="form-container-panel">
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Coverage Period</label>
+                    <input type="number" class="form-control" formControlName="coveragePeriod" placeholder="Coverage Period">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Price</label>
+                    <input type="number" class="form-control" formControlName="price" placeholder="Price">
+                  </div>
+                  <div class="form-group">
+                      <label for="exampleInputPassword1">Risk Type</label>
+                      <select type="number" class="form-control" formControlName="riskType"  placeholder="Risk Type">
+                        <option>Low</option>
+                        <option>Medium</option>
+                        <option>Medium High</option>
+                        <option>High</option>
+                      </select>
+                  </div>
+                </div>
+              </div>
+              <div class="panel panel-default coverings-container" *ngIf="!showMessage">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">Coverage</h4>
+                  </div>
+                  <div class="panel-body">
+                      <div class="policy-covers-headers" (click)="addNewCoverage()">
+                        <span class="glyphicon glyphicon-plus-sign"></span>
+                        <span>Add Coverage</span>
+                      </div>
+                      <table class="table">
+                          <thead>
+                            <tr>
+                              <th scope="col">Coverage</th>
+                              <th scope="col">Percentage</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let coverage of this.formState.controls.coveringPolicy.value">
+                              <td>
+                                <select type="number" [(ngModel)]=coverage.coveringId class="form-control" formControlName="fake"  placeholder="Risk Type">
+                                      <option value="{{coverageType.id}}" *ngFor="let coverageType of coverageTypes">
+                                        {{coverageType.description}}
+                                      </option>
+                                </select>
+                              </td>
+                              <td>
+                                <input class="form-control" [value]="coverage.porcentage" (input)="coverage.porcentage = $event.target.value">
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                  </div>
+              </div>
+              <div class="alert alert-warning alert-dismissible" role="alert" *ngIf="showMessage">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <strong>Success !</strong>
+                  Your policy was created succesfully
+              </div>
+              <div class="form-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button *ngIf="!showMessage" type="submit" class="btn btn-primary" [disabled]="!formState.valid">Save changes</button>
+              </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>

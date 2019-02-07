@@ -1,0 +1,40 @@
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Policies</div>
+  <div class="panel-body">
+      <div class="alert alert-success alert-dismissible" role="alert" *ngIf="messageView">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <strong>Success !</strong>
+          {{messageView}}
+      </div>
+      <!-- Table -->
+      <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>...</th>
+              <th>#</th>
+              <th>Policy</th>
+              <th>Description</th>
+              <th>Starting Date</th>
+              <th>Coverage Period (Months)</th>
+              <th>Type</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let policy of policies">
+                  <td><a title="Delete Policy" (click)="deletePolicy(policy.policyNumber)" class="glyphicon glyphicon-trash"></a></td>
+                  <td>{{policy.policyNumber}}</td>
+                  <td>{{policy.name}}</td>
+                  <td>{{policy.description}}</td>
+                  <td>{{policy.startingDate | date }}</td>
+                  <td>{{policy.coveragePeriod }}</td>
+                  <td>{{policy.riskType }}</td>
+                  <td>{{policy.price | currency}}</td>
+                </tr>
+          </tbody>
+      </table>
+      </div>
+  </div>
+  <button class="float-icon" type="button" title="Add New Policy" data-toggle="modal" data-target="#exampleModalCenter"><i class="glyphicon glyphicon-plus-sign inner-icon"></i></button>
+  <app-policy-view></app-policy-view>
