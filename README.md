@@ -2,6 +2,8 @@
 
 <img width="456" alt="policylist" src="https://user-images.githubusercontent.com/18702110/52429197-905c2480-2ad1-11e9-8d65-333a6d49687f.PNG">
 
+<img width="307" alt="policycreation" src="https://user-images.githubusercontent.com/18702110/52429220-9baf5000-2ad1-11e9-980a-512a5535c02c.PNG">
+
 # EnsuranceUi
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.0.
